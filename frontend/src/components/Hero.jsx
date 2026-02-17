@@ -33,7 +33,7 @@ export default function Hero() {
                   className="rounded-full border border-[#d2d9e6] px-7 py-3 text-sm font-semibold text-[#0c1630] hover:bg-[#f4f7fb] transition dark:border-[#2f3538] dark:text-white dark:hover:bg-[#2f3538]/60"
                   type="button"
                 >
-                  +252 61 234 5678
+                  +252 61 5835675
                 </button>
               </div>
             </div>
