@@ -32,14 +32,14 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="bg-[#f5f7fa] py-16">
+    <section className="bg-[#f5f7fa] py-16 dark:bg-[#1A1D1E]">
       <div className="mx-auto w-full max-w-6xl px-4">
         {/* Title */}
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-wide text-slate-900">
+          <h2 className="text-3xl font-extrabold tracking-wide text-slate-900 dark:text-white">
             MY <span className="text-emerald-500 ">SERVICES</span>
           </h2>
-          <div className="mx-auto mt-3 h-1 w-12 rounded-full bg-[#0A1F44]" />
+          <div className="mx-auto mt-3 h-1 w-12 rounded-full bg-[#0A1F44] dark:bg-emerald-500" />
         </div>
 
         {/* Grid */}
@@ -49,17 +49,17 @@ export default function ServicesSection() {
             return (
               <div
                 key={s.title}
-                className="group rounded-none border border-slate-300 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                className="group rounded-none border border-slate-300 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-[#2f3538] dark:bg-[#222628] dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
               >
-                <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-md border border-emerald-500  bg-[#f5f7fa]">
-                  <Icon className="h-5 w-5 text-emerald-500 " />
+                <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-md border border-emerald-500 bg-[#f5f7fa] dark:bg-[#2a2f32]">
+                  <Icon className="h-5 w-5 text-emerald-500" />
                 </div>
 
-                <h3 className="mt-5 text-center text-sm font-extrabold tracking-widest text-slate-900">
+                <h3 className="mt-5 text-center text-sm font-extrabold tracking-widest text-slate-900 dark:text-white">
                   {s.title}
                 </h3>
 
-                <p className="mx-auto mt-3 max-w-xs text-center text-sm leading-6 text-slate-600">
+                <p className="mx-auto mt-3 max-w-xs text-center text-sm leading-6 text-slate-600 dark:text-[#c9d0da]">
                   {s.desc}
                 </p>
               </div>

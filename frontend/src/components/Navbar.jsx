@@ -1,171 +1,140 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import {
-  Bars3Icon,
-  XMarkIcon,
-  MapPinIcon,
-  EnvelopeIcon,
-  ChevronDownIcon,
-  UserCircleIcon,
-  MoonIcon,
-} from "@heroicons/react/24/outline";
+import { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { Menu, Moon, Sun, X } from 'lucide-react'
+import { useTheme } from '../providers/ThemeProvider'
+import { useAuth } from '../providers/AuthProvider'
 
-export default function Header() {
-  const [open, setOpen] = useState(false);
-  const [dark, setDark] = useState(true); // start in dark mode to showcase #1A1D1E
+const links = [
+  { to: '/', label: 'Home' },
+  { to: '/about', label: 'About' },
+  { to: '/projects', label: 'Projects' },
+  { to: '/services', label: 'Services' },
+  { to: '/blog', label: 'Blog' },
+  { to: '/contact', label: 'Contact' },
+]
 
-  useEffect(() => {
-    const root = document.documentElement;
-    if (dark) root.classList.add("dark");
-    else root.classList.remove("dark");
-  }, [dark]);
+const Navbar = () => {
+  const { theme, toggleTheme } = useTheme()
+  const { user, logout } = useAuth()
+  const [open, setOpen] = useState(false)
 
   return (
-    <header className="w-full bg-white text-[#0c1630] dark:bg-[#1A1D1E] dark:text-white">
-      {/* Top info bar */}
-      <div className="bg-[#0A1F44] text-white text-sm dark:bg-[#1A1D1E] border-b border-[#0c1630]/10 dark:border-[#ffffff]/10">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2">
-          <div className="flex flex-wrap items-center gap-4">
-            <span className="inline-flex items-center gap-2">
-              <MapPinIcon className="h-5 w-5" />
-              Hodan Mogadishu, Somalia
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <EnvelopeIcon className="h-5 w-5" />
-              bmohamud77@gmail.com
-            </span>
-          </div>
-          <div className="hidden sm:flex items-center gap-2">
-            <button
-              type="button"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-3 py-1 text-xs font-semibold hover:bg-white/10 transition"
+    <header className="sticky top-0 z-40 backdrop-blur bg-white/80 dark:bg-[#0f1113]/80 border-b border-border">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+        <Link to="/" className="text-lg font-bold tracking-tight">
+          <span className="text-primary">
+            {/* <img src="./assets/shirwac.png" alt="Logo" className=" w-40" /> */}
+            <h1 className='text-3xl'>Shirwac <span className='text-[#0f1113]'>ICT</span></h1>
+            </span> 
+        </Link>
+
+        <nav className="hidden items-center gap-6 text-sm font-semibold md:flex">
+          {links.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={({ isActive }) =>
+                `transition hover:text-primary ${isActive ? 'text-primary' : 'text-foreground'}`
+              }
             >
-              English
-              <ChevronDownIcon className="h-4 w-4" />
-            </button>
-            <Link
-              to="/login"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-3 py-1 text-xs font-semibold hover:bg-white/10 transition"
-            >
-              <UserCircleIcon className="h-5 w-5" />
-              Login
-            </Link>
-            <button
-              type="button"
-              onClick={() => setDark((v) => !v)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/30 hover:bg-white/10 transition"
-            >
-              <MoonIcon className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
-      </div>
+              {item.label}
+            </NavLink>
+          ))}
+          {user && (
+            <NavLink to="/admin" className={({ isActive }) => (isActive ? 'text-primary' : 'text-foreground')}>
+              Admin
+            </NavLink>
+          )}
+        </nav>
 
-      {/* Main nav */}
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="flex items-center justify-between gap-4 py-4 md:py-5">
-          {/* Logo */}
-          <div className="w-44 md:w-48">
-            <img src="./assets/logo.png" alt="Logo" className="h-full w-full object-contain" />
-          </div>
-
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-10 text-sm font-semibold text-[#0c1630] dark:text-white">
-            <Link to="/" className="hover:text-[#2946b8] dark:hover:text-emerald-400 transition">
-              Home
-            </Link>
-            <Link to="/about" className="hover:text-[#2946b8] dark:hover:text-emerald-400 transition">
-              About
-            </Link>
-            <Link to="/services" className="hover:text-[#2946b8] dark:hover:text-emerald-400 transition">
-              Services
-            </Link>
-            <Link to="/blog" className="hover:text-[#2946b8] dark:hover:text-emerald-400 transition">
-              Blog
-            </Link>
-            <Link to="/contact" className="hover:text-[#2946b8] dark:hover:text-emerald-400 transition">
-              Contact
-            </Link>
-          </nav>
-
-          {/* CTA */}
-          <Link
-            to="/contact"
-            className="hidden md:inline-flex rounded-full bg-emerald-500 px-6 py-2 text-sm font-semibold text-white shadow-md shadow-emerald-200 hover:bg-emerald-600 transition"
-          >
-             Download CV
-          </Link>
-
-          {/* Mobile toggle */}
+        <div className="flex items-center gap-3">
           <button
             type="button"
-            className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-[#0c1630] hover:bg-gray-100 dark:text-white dark:hover:bg-white/10"
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
+            onClick={toggleTheme}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border hover:bg-muted"
+            aria-label="Toggle theme"
           >
-            <span className="sr-only">Toggle menu</span>
-            {open ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
+            {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </button>
+          {user ? (
+            <button
+              onClick={logout}
+              className="hidden rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white shadow md:inline-flex"
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="hidden rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white shadow md:inline-flex"
+            >
+              Hire Me
+            </Link>
+          )}
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-md p-2 md:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
-
-        {/* Mobile menu */}
-        {open && (
-          <div className="md:hidden px-4 pb-4 space-y-3">
-            <Link
-              to="/"
-              className="block rounded-lg px-3 py-2 text-sm font-semibold text-[#0c1630] hover:bg-gray-50 dark:text-white dark:hover:bg-white/10"
-              onClick={() => setOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              className="block rounded-lg px-3 py-2 text-sm font-semibold text-[#0c1630] hover:bg-gray-50 dark:text-white dark:hover:bg-white/10"
-              onClick={() => setOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              to="/services"
-              className="block rounded-lg px-3 py-2 text-sm font-semibold text-[#0c1630] hover:bg-gray-50 dark:text-white dark:hover:bg-white/10"
-              onClick={() => setOpen(false)}
-            >
-              Services
-            </Link>
-            <Link
-              to="/blog"
-              className="block rounded-lg px-3 py-2 text-sm font-semibold text-[#0c1630] hover:bg-gray-50 dark:text-white dark:hover:bg-white/10"
-              onClick={() => setOpen(false)}
-            >
-              Blog
-            </Link>
-            <Link
-              to="/contact"
-              className="block rounded-lg px-3 py-2 text-sm font-semibold text-[#0c1630] hover:bg-gray-50 dark:text-white dark:hover:bg-white/10"
-              onClick={() => setOpen(false)}
-            >
-              Contact
-            </Link>
-            <button
-              type="button"
-              onClick={() => {
-                setDark((v) => !v);
-                setOpen(false);
-              }}
-              className="w-full rounded-lg px-3 py-2 text-sm font-semibold text-[#0c1630] hover:bg-gray-50 dark:text-white dark:hover:bg-white/10 text-left"
-            >
-              Dark mode {dark ? "(On)" : "(Off)"}
-            </button>
-            <button
-              type="button"
-              className="w-full rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-600 transition"
-              onClick={() => setOpen(false)}
-            >
-               Download CV
-            </button>
-          </div>
-        )}
       </div>
+
+      {open && (
+        <div className="md:hidden border-t border-border bg-background px-4 pb-4">
+          <div className="flex flex-col gap-3 py-3">
+            {links.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={({ isActive }) =>
+                  `rounded-lg px-3 py-2 text-sm font-semibold hover:bg-muted ${isActive ? 'bg-muted text-primary' : ''}`
+                }
+                onClick={() => setOpen(false)}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+            {user && (
+              <NavLink
+                to="/admin"
+                className={({ isActive }) =>
+                  `rounded-lg px-3 py-2 text-sm font-semibold hover:bg-muted ${isActive ? 'bg-muted text-primary' : ''}`
+                }
+                onClick={() => setOpen(false)}
+              >
+                Admin
+              </NavLink>
+            )}
+            <button
+              onClick={() => {
+                toggleTheme()
+                setOpen(false)
+              }}
+              className="rounded-lg px-3 py-2 text-left text-sm font-semibold hover:bg-muted"
+            >
+              Theme: {theme === 'dark' ? 'Dark' : 'Light'}
+            </button>
+            {user ? (
+              <button onClick={logout} className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white">
+                Logout
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white text-center"
+                onClick={() => setOpen(false)}
+              >
+                Hire Me
+              </Link>
+            )}
+          </div>
+        </div>
+      )}
     </header>
-  );
+  )
 }
+
+export default Navbar

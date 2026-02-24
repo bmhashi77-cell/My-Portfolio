@@ -1,0 +1,76 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.6.2
+2 info using node@v24.12.0
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:D:\Bashir Projects\my Portfolio\backend\.npmrc
+5 silly config load:file:C:\Users\AZAF\.npmrc
+6 silly config load:file:C:\Users\AZAF\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm install
+8 verbose argv "install"
+9 verbose logfile logs-max:10 dir:D:\Bashir Projects\my Portfolio\backend\.npm-cache\_logs\2026-02-22T18_59_16_417Z-
+10 verbose logfile D:\Bashir Projects\my Portfolio\backend\.npm-cache\_logs\2026-02-22T18_59_16_417Z-debug-0.log
+11 silly logfile done cleaning log files
+12 http fetch GET https://registry.npmjs.org/npm attempt 1 failed with ECONNREFUSED
+13 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+14 silly idealTree buildDeps
+15 silly fetch manifest bcryptjs@^2.4.3
+16 silly packumentCache full:https://registry.npmjs.org/bcryptjs cache-miss
+17 silly fetch manifest cors@^2.8.5
+18 silly packumentCache full:https://registry.npmjs.org/cors cache-miss
+19 silly fetch manifest express-async-errors@^3.1.1
+20 silly packumentCache full:https://registry.npmjs.org/express-async-errors cache-miss
+21 silly fetch manifest express-mongo-sanitize@^2.2.0
+22 silly packumentCache full:https://registry.npmjs.org/express-mongo-sanitize cache-miss
+23 silly fetch manifest express-rate-limit@^7.5.0
+24 silly packumentCache full:https://registry.npmjs.org/express-rate-limit cache-miss
+25 silly fetch manifest helmet@^7.2.0
+26 silly packumentCache full:https://registry.npmjs.org/helmet cache-miss
+27 silly fetch manifest http-status-codes@^2.3.0
+28 silly packumentCache full:https://registry.npmjs.org/http-status-codes cache-miss
+29 silly fetch manifest jsonwebtoken@^9.0.2
+30 silly packumentCache full:https://registry.npmjs.org/jsonwebtoken cache-miss
+31 silly fetch manifest morgan@^1.10.0
+32 silly packumentCache full:https://registry.npmjs.org/morgan cache-miss
+33 silly fetch manifest slugify@^1.6.6
+34 silly packumentCache full:https://registry.npmjs.org/slugify cache-miss
+35 silly fetch manifest xss-clean@^0.1.4
+36 silly packumentCache full:https://registry.npmjs.org/xss-clean cache-miss
+37 silly fetch manifest zod@^3.23.8
+38 silly packumentCache full:https://registry.npmjs.org/zod cache-miss
+39 silly fetch manifest eslint@^9.0.0
+40 silly packumentCache full:https://registry.npmjs.org/eslint cache-miss
+41 silly placeDep ROOT bcryptjs@ OK for: portfolio-server@1.0.0 want: ^2.4.3
+42 silly placeDep ROOT cors@ OK for: portfolio-server@1.0.0 want: ^2.8.5
+43 silly placeDep ROOT eslint@ OK for: portfolio-server@1.0.0 want: ^9.0.0
+44 silly placeDep ROOT express-async-errors@ OK for: portfolio-server@1.0.0 want: ^3.1.1
+45 silly placeDep ROOT express-mongo-sanitize@ OK for: portfolio-server@1.0.0 want: ^2.2.0
+46 silly placeDep ROOT express-rate-limit@ OK for: portfolio-server@1.0.0 want: ^7.5.0
+47 silly placeDep ROOT helmet@ OK for: portfolio-server@1.0.0 want: ^7.2.0
+48 silly placeDep ROOT http-status-codes@ OK for: portfolio-server@1.0.0 want: ^2.3.0
+49 silly placeDep ROOT jsonwebtoken@ OK for: portfolio-server@1.0.0 want: ^9.0.2
+50 silly placeDep ROOT morgan@ OK for: portfolio-server@1.0.0 want: ^1.10.0
+51 silly placeDep ROOT slugify@ OK for: portfolio-server@1.0.0 want: ^1.6.6
+52 silly placeDep ROOT xss-clean@ OK for: portfolio-server@1.0.0 want: ^0.1.4
+53 silly placeDep ROOT zod@ OK for: portfolio-server@1.0.0 want: ^3.23.8
+54 verbose stack Error: request to https://registry.npmjs.org/bcryptjs failed: cache mode is 'only-if-cached' but no cached response is available.
+54 verbose stack     at cacheFetch (C:\Program Files\nodejs\node_modules\npm\node_modules\make-fetch-happen\lib\cache\index.js:12:13)
+54 verbose stack     at async fetch (C:\Program Files\nodejs\node_modules\npm\node_modules\make-fetch-happen\lib\fetch.js:98:7)
+54 verbose stack     at async RegistryFetcher.packument (C:\Program Files\nodejs\node_modules\npm\node_modules\pacote\lib\registry.js:90:19)
+54 verbose stack     at async RegistryFetcher.manifest (C:\Program Files\nodejs\node_modules\npm\node_modules\pacote\lib\registry.js:128:23)
+54 verbose stack     at async #fetchManifest (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:1227:20)
+54 verbose stack     at async #nodeFromEdge (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:1065:19)
+54 verbose stack     at async #buildDepStep (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:929:11)
+54 verbose stack     at async Arborist.buildIdealTree (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:182:7)
+54 verbose stack     at async Promise.all (index 1)
+54 verbose stack     at async Arborist.reify (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\reify.js:114:5)
+55 error code ENOTCACHED
+56 error request to https://registry.npmjs.org/bcryptjs failed: cache mode is 'only-if-cached' but no cached response is available.
+57 silly unfinished npm timer reify 1771786757057
+58 silly unfinished npm timer reify:loadTrees 1771786757060
+59 verbose cwd D:\Bashir Projects\my Portfolio\backend
+60 verbose os Windows_NT 10.0.26200
+61 verbose node v24.12.0
+62 verbose npm  v11.6.2
+63 verbose exit 1
+64 verbose code 1
+65 error A complete log of this run can be found in: D:\Bashir Projects\my Portfolio\backend\.npm-cache\_logs\2026-02-22T18_59_16_417Z-debug-0.log

@@ -1,20 +1,37 @@
 {
-  "name": "backend",
+  "name": "portfolio-server",
   "version": "1.0.0",
-  "description": "",
-  "license": "ISC",
+  "description": "Full-stack portfolio API (Express + MongoDB)",
+  "license": "MIT",
   "author": "",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.11"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "lint": "eslint .",
+    "seed": "node src/scripts/seed.js",
+    "test": "echo \"(todo) add tests\""
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^17.3.1",
-    "express": "^5.2.1",
-    "mongoose": "^9.2.1"
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^7.2.0",
+    "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^9.2.1",
+    "morgan": "^1.10.0",
+    "slugify": "^1.6.6",
+    "xss-clean": "^0.1.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "nodemon": "^3.1.11"
   }
 }

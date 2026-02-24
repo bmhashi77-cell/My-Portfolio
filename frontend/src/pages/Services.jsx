@@ -1,13 +1,16 @@
-import React from 'react'
+import ServicesSection from '../components/ServicesSection'
 
 const Services = () => {
   return (
-    <main className="max-w-6xl mx-auto px-6 lg:px-8 py-16 space-y-4">
-      <h1 className="text-3xl font-bold">Services</h1>
-      <p className="text-gray-700">
-        Outline the key services you offer and how they help your clients.
-      </p>
-    </main>
+    <div className="space-y-12">
+      <div className="mx-auto max-w-6xl px-4 pt-12">
+        <h1 className="text-3xl font-bold">Services</h1>
+        <p className="text-muted-foreground">
+          From design to deployment, I help founders and teams ship performant web experiences.
+        </p>
+      </div>
+      <ServicesSection />
+    </div>
   )
 }
 
